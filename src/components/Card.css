@@ -4,3 +4,75 @@
   border-radius: 2px;
   margin: 5px;
 }
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.dishes-container {
+  display: flex;
+  direction: column;
+  margin-left: 0px;
+  margin-top: 10px;
+  width:100%
+}
+
+.dish-details {
+  width: 80%;
+  padding-left: 10px;
+}
+
+.dish-image {
+  display: flex;
+  height: 100px;
+  width: 150px;
+  border-radius: 10px;
+}
+
+.dish-title {
+  padding-top: 5px;
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+.dish-price {
+  padding-left: 15px;
+  color: rgb(28, 28, 28);
+}
+
+.quantity-container {
+  padding-top: 5px;
+  padding-left: 20px;
+}
+
+.quantity {
+  font-size: 15px;
+}
+
+.add-remove-buttons {
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border: 0.5px solid rgb(239, 79, 95);
+  background: rgb(239, 79, 95);
+  color: white;
+}
+
+.item-count-container {
+  border-radius: 5px;
+  padding: 2px;
+  border: 0.5px solid rgb(239, 79, 95);
+  background: rgb(239, 79, 95);
+}
+
+.item-count {
+  align-items: center;
+  padding-right: 5px;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border: 0.5px solid rgb(239, 79, 95);
+  border-radius: 0px;
+  background: rgb(239, 79, 95);
+  color: white;
+}
