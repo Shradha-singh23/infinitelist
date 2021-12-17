@@ -29,9 +29,55 @@ function App() {
     fetchCard();
   }, [page])
 
+  const incrementCount = (food) => {
+    const exist = cart.find((item) => item.id === food.uid);
+    if (exist) {
+      setCart((prevCart) => {
+        const updatedCart = prevCart.map((_item) => {
+          const item = { ..._item };
+          if (item.id === food.uid) {
+            item.quantity = item.quantity + 1;
+          }
+          return item;
+        });
+        return updatedCart;
+      });
+    } else {
+      const newItem = {
+        id: food.uid,
+        name: food.dish,
+        price: 100,
+        quantity: 1,
+      };
+      setCart((prevCart) => [...prevCart, newItem]);
+    }
+  };
+
+  const decrementCount = (food) => {
+    const exist = cart.find((item) => item.id === food.uid);
+    if (exist.quantity === 1) {
+      setCart((prevCart) => prevCart.filter((item) => item.id !== food.uid));
+    } else {
+      setCart((prevCart) => {
+        return prevCart.map((_item) => {
+          const item = { ..._item };
+          if (item.id === food.uid) {
+            item.quantity--;
+          }
+          return item;
+        });
+      });
+    }
+  };
+
   const cCards = results.map((result) => {
     return (
-      <Card food={result} key={result.id} cart={cart} setCart={setCart}/>
+      <Card 
+        food={result} 
+        key={result.id} 
+        incrementCount={incrementCount}
+        decrementCount={decrementCount}
+      />
     )
   })
 

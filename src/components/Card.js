@@ -1,51 +1,17 @@
 import React, { useState } from 'react';
 import './Card.css'
 
-export default function Card({ food, cart, setCart }) {
+export default function Card({ food, incrementCount, decrementCount }) {
     const[count, setCount] = useState(0);
 
     const onAddCart = () => {
-        console.log("here!")
         setCount(prevCount => prevCount + 1);
-        const exist = cart.find(item => item.id === food.uid);
-        if(exist){
-            // debugger;
-            setCart(prevCart => {
-                const updatedCart = prevCart.map(item => {
-                    console.log(item);
-                    if(item.id === food.uid){
-                        item.quantity++;
-                    }
-                    return item;
-                })
-                return updatedCart;
-            })
-        } else {
-            const newItem = {
-                id: food.uid,
-                name: food.dish,
-                price: 100,
-                quantity: 1
-            }
-            setCart((prevCart) => [...prevCart, newItem])
-        }
+        incrementCount(food);
     }
 
     const onRemoveCart = () => {
-        setCount((prevCount) => prevCount - 1)
-        const exist = cart.find((item) => item.id === food.uid)
-        if(exist.quantity === 1) {
-            setCart((prevCart) => prevCart.filter((item) => item.id !== food.uid))
-        } else{
-            setCart((prevCart) => {
-                return prevCart.map((item) => {
-                    if (item.id === food.uid){
-                        item.quantity--
-                    }
-                    return item;
-                })
-            })
-        }
+        setCount((prevCount) => prevCount - 1);
+        decrementCount(food);
     }
 
     return (
